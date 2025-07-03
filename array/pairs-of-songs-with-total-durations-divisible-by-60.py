@@ -5,10 +5,18 @@ class Solution(object):
         :rtype: int
         """
         count = 0
-        for i in range(len(time)-1):
-            for j in range(i+1, len(time)):
-                if (time[i] + time[j]) % 60 == 0:
-                    count += 1
-        return count
+        remainder_counts = {}
 
-        
+        for t in time:
+            r = t % 60
+            complement = (60 - r) % 60
+
+            if complement in remainder_counts:
+                count += remainder_counts[complement]
+                
+            if r in remainder_counts:
+                remainder_counts[r] += 1
+            else:
+                remainder_counts[r] = 1
+
+        return count
