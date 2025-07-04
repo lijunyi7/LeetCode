@@ -4,6 +4,8 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
+        if len(intervals) <= 1:
+            return intervals
         intervals.sort(key=lambda x: x[0])
         left = intervals[0][0]
         right = intervals[0][1]
