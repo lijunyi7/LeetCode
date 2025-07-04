@@ -4,23 +4,22 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-        if len(intervals) <= 1:
-            return intervals
+        if not intervals:
+            return []
+
         intervals.sort(key=lambda x: x[0])
-        left = intervals[0][0]
-        right = intervals[0][1]
-        result = []
-        for interval in intervals[1::]:
-            if interval[0] <= (right - left) + 1:
-                if interval[0] < left:
-                    left = interval[0]
-                if interval[1] > right:
-                    right = interval[1]
+        result = [intervals[0]]
+
+        for current in intervals[1:]:
+            last = result[-1]
+
+            if current[0] <= last[1]:
+                last[1] = max(last[1], current[1])
             else:
-                left = interval[0]
-                right = interval[1]
-            result.append([left, right])
+                result.append(current)
+
         return result
+
             
             
 
