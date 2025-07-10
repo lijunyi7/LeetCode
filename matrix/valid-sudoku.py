@@ -17,8 +17,8 @@ class Solution:
                 rows[row].add(value)
                 if value in cols[col]:
                     return False
-                rows[col].add(value)
-                idx = (row//3)*3 + (col//3)
+                cols[col].add(value)
+                idx = (row // 3)*3 + col // 3
                 if value in boxes[idx]:
                     return False
                 boxes[idx].add(value)
