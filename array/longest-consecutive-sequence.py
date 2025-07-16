@@ -3,6 +3,8 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         nums_sorted = sorted(set(nums))
+        if not nums_sorted:
+            return 0
         prev = nums_sorted[0]
         hashmap = {}
         consective_term = 1
