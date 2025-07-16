@@ -2,21 +2,14 @@
 #
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        nums_sorted = sorted(set(nums))
-        if not nums_sorted:
-            return 0
-        prev = nums_sorted[0]
-        hashmap = {}
-        consective_term = 1
-        hashmap[consective_term] = [prev]
-        for num in nums_sorted[1::]:
-            if abs(num - prev) > 1:
-                consective_term += 1
-                prev = num
-                continue
-            elif abs(num - prev) == 1:
-                hashmap[consective_term].append(num)
-                prev = num
-        return max(len(v) for v in hashmap.values())
-
-                
+        nums_sorted = set(nums)
+        longest_streak = 0
+        for num in nums_sorted:
+            if num - 1 not in nums_sorted:
+                curr_num = num
+                curr_streak = 1
+                while curr_num + 1 in nums_sorted:
+                    curr_streak += 1
+                    curr_num += 1
+                longest_streak = max(curr_streak, longest_streak)
+        return longest_streak
