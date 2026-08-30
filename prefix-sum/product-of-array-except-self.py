@@ -1,17 +1,19 @@
-import queue 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        prefix = [1] * n
-        for i in range(1, n):
-            prefix[i] = prefix[i-1] * nums[i - 1]
-        postfix = [1] * n
-        for i in range(n - 2, -1 , -1):
-            postfix[i] = postfix[i + 1] * nums[i + 1]
-        result = [prefix[i] * postfix[i] for i in range(n)]
-        return result
-
-
-
+        length = len(nums)
+        pre = [1] * length
+        post = [1] * length
+        for i in range(length):
+            if i == 0:
+                pre[i] = 1
+                continue
+            pre[i] = pre[i -1] * nums[i - 1]
+        for i in range(length - 1, -1, -1):
+            if (i - length) == -1:
+                post[i - length] = 1
+                continue
+            post[i - length] = post[i - length + 1] * nums[i - length + 1]
+        
+        return [post[i] * pre[i] for i in range(length)]
 
         
