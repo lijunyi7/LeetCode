@@ -10,7 +10,7 @@ class Solution:
             elif sort_nums[i-1] == sort_nums[i]:
                 continue
             else:
-                reuslt = 1
+                result = 1
         return result
                 
 
