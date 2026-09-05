@@ -1,10 +1,15 @@
-class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        s_filter = ''.join(c.lower() for c in s if c.isalnum())
-        if not s_filter:
-            return True
-        return s_filter == s_filter[::-1]
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        string = ""
+        for i in s:
+            if i.isalnum():
+                string += i
+        string_b= ""
+        for i in range(len(s) - 1, -1, -1):
+            if s[i].isalnum():
+                string_b += s[i]
+        return string.lower() == string_b.lower()
+    
+
+
+        
