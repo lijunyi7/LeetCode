@@ -4,24 +4,41 @@ class Solution:
         i = 0
         result = []
 
-        def twoSum(target: int, l: list[int]):
-            left = 0
-            right = len(l) - 1
-            while(right > left):
-                if l[right] + l[left] == target:
-                    if ([l[right], l[left], -target] not in result):
-                        result.append([l[right], l[left], -target])
+        def twoSum(target: int, start: int):
+            left = start
+            right = len(nums) - 1
+
+            while right > left:
+                total = nums[right] + nums[left]
+
+                if total == target:
+                    result.append([nums[right], nums[left], -target])
+
                     left += 1
                     right -= 1
-                elif l[right] + l[left] > target:
+
+                    # # Skip duplicate left values
+                    # while left < right and nums[left] == nums[left - 1]:
+                    #     left += 1
+
+                    # # Skip duplicate right values
+                    # while left < right and nums[right] == nums[right + 1]:
+                    #     right -= 1
+
+                elif total > target:
                     right -= 1
                 else:
                     left += 1
-        
-        while i < len(nums) and nums[i] <= 0:
-                current = nums[i]
-                target = -current
-                twoSum(target, nums[i+1:])
-                i+=1
-        return result
 
+        while i < len(nums) and nums[i] <= 0:
+
+            if i > 0 and nums[i] == nums[i - 1]:
+                i += 1
+                continue
+
+            current = nums[i]
+            target = -current
+            twoSum(target, i + 1)
+            i += 1
+
+        return result
