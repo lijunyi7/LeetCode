@@ -17,13 +17,13 @@ class Solution:
                     left += 1
                     right -= 1
 
-                    # # Skip duplicate left values
-                    # while left < right and nums[left] == nums[left - 1]:
-                    #     left += 1
+                    # Skip duplicate left values
+                    while left < right and nums[left] == nums[left - 1]:
+                        left += 1
 
-                    # # Skip duplicate right values
-                    # while left < right and nums[right] == nums[right + 1]:
-                    #     right -= 1
+                    # Skip duplicate right values
+                    while left < right and nums[right] == nums[right + 1]:
+                        right -= 1
 
                 elif total > target:
                     right -= 1
@@ -32,6 +32,7 @@ class Solution:
 
         while i < len(nums) and nums[i] <= 0:
 
+            # Skip duplicate current values
             if i > 0 and nums[i] == nums[i - 1]:
                 i += 1
                 continue
