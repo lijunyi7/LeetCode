@@ -1,24 +1,10 @@
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        if not prices:
-            return 0
-        
-        min_price = prices[0]
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        spend = min(prices)
+        profit = -spend
         max_profit = 0
-        
-        for price in prices[1:]:
-            # Update max profit if we sell today
-            profit = price - min_price
-            max_profit = max(max_profit, profit)
-            
-            # Update min price if we find a cheaper one
-            min_price = min(min_price, price)
-        
+        for i in range(prices.index(spend) + 1, len(prices)):
+            max_profit = max(max_profit, prices[i] + profit)
         return max_profit
-
 
         
