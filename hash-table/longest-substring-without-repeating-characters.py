@@ -12,7 +12,7 @@ class Solution:
                 right += 1
                 longest_len = max(longest_len, current_win_len)
             else:
-                # longest_len = max(longest_len, current_win_len, right - left)
+                longest_len = max(longest_len, current_win_len, right - left)
                 left = right
                 sub = ""
                 current_win_len = 0
