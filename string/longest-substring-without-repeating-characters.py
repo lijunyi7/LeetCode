@@ -10,9 +10,9 @@ class Solution:
                 sub += s[i]
                 current_win_len += 1
                 right += 1
-                longest_len = max(longest_len, current_win_len)
+                longest_len = max(longest_len, len(sub))
             else:
-                longest_len = max(longest_len, current_win_len, right - left)
+                # longest_len = max(longest_len, current_win_len, right - left)
                 left = right
                 sub = ""
                 current_win_len = 0
