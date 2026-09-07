@@ -14,7 +14,7 @@ class Solution:
             else:
                 # longest_len = max(longest_len, current_win_len, right - left)
                 left = right
-                sub = ""
+                sub = s[left]
                 current_win_len = 0
         return longest_len
 
