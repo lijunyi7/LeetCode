@@ -11,7 +11,7 @@ class Solution:
             while((right - left + 1) - max_freq > k):
                 freq_tracker[s[left]] -= 1
                 left += 1
-            result = max(result, max_freq + k)
+            result = max(result, right - left + 1)
         return result
 
 
