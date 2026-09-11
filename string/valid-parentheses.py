@@ -1,20 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
+        hash_map = {'(': ')', '{': '}', '[': ']'}
         stack = []
-
-        hashmap = {'(':')', '[':']', '{': '}'}
-        for p in s:
-            if p in hashmap.keys():
-                stack.append(p)
-            elif not stack:
-                return False
+        for i in s:
+            if i in hash_map.keys():
+                stack.append(i)
             else:
-                open_pra = stack.pop()
-                if(hashmap[open_pra] != p):
+                poped = stack.pop()
+                if hash_map[poped] != i:
                     return False
         return not stack
-
-
-        
 
         
