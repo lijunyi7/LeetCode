@@ -14,7 +14,7 @@ class Solution:
                 stack.append(current_result)
             else:
                 stack.append(int(tokens[i]))
-        return current_result
+        return stack[-1]
 
 
         
